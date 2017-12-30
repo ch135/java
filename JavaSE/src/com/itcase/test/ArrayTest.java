@@ -9,7 +9,7 @@ public class ArrayTest {
 	int[] a =new int[]{1,2,3,4,5,6};
 	int[] b =new int[]{1,2,3,4,5,6};
 	
-	public void dingyi(){
+	public void Define(){
 		//创建一个局部变量，该变量占用栈内存；该方法调用结束后，栈内存中的数据会被清除
 		@SuppressWarnings("unused")
 		int a;

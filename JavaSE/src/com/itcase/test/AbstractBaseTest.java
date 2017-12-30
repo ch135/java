@@ -1,18 +1,17 @@
 package com.itcase.test;
 
-//一个完整类包含:构造器、成员变量、方法；没有定义构造函数时，系统会默认提供一个构造器
+/*
+ * <p>一个完整类包含:成员变量、构造器、方法；没有定义构造函数时，系统会默认提供一个构造器</p>
+ */
 public class AbstractBaseTest {
-	// 成员变量
+	 // 成员变量
 	private String n;
 	private String a;
 	
-	//代码块，在实例化函数时执行
-	{
-		n="陈浩";
-		a="22";
-	}
+	 //代码块，在实例化函数时执行
+	{ n="陈浩"; a="22"; }
 	
-	// 构造器
+	 // 构造器
 	public AbstractBaseTest(String name, String age) {
 		this.n = name;
 		this.a = age;
