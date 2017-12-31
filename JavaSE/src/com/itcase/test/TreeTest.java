@@ -15,7 +15,7 @@ public class TreeTest {
 		TreeSet<String> ts=new TreeSet<String>();
 		ts.add(new String("jjjj"));
 		ts.add(new String("jxccc"));
-		ts.add("4");
+		ts.add("1");
 		ts.add("5");
 		System.out.println(ts);
 	}

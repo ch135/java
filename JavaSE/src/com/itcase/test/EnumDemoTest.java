@@ -1,6 +1,8 @@
 package com.itcase.test;
 
-//枚举类不能被继承，不能继承父类，也不能派生出子类
+/*
+ * <p>枚举类不能被继承，不能继承父类，也不能派生出子类</p>
+ */
 public enum EnumDemoTest {
 	plus{
 		public int eval(int a,int b){

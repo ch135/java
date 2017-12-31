@@ -6,14 +6,9 @@ import java.util.List;
 import java.util.ListIterator;
 
 /*
- * List:有序集合，内容可重复；在collec-
- * tion的基础上添加了根据索引操作元素的方法
- * 
- * ArrayList():List()的实现类；线程不安全
- * 
- * Arrays:操作数组的工具类；
- * Arrays.ArrayList：一个固定长度的List数组，
- * 只能遍历，不能修改
+ * List:有序集合，内容可重复；在collection的基础上添加了根据索引操作元素的方法
+ * ArrayList():List()的实现类；线程不安全；Arrays:操作数组的工具类；
+ * Arrays.ArrayList：一个固定长度的List数组，只能遍历，不能修改
  */
 public class ListTest {
 	public static void main(String[] args){

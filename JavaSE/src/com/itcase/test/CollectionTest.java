@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /*
- * Collections：集合工具类，含有对集合进行排序、查询和修改等工作
+ * <p>Collections：集合工具类，含有对集合进行排序、查询和修改等工作</p>
  */
 public class CollectionTest {
 	@SuppressWarnings("unchecked")
