@@ -3,13 +3,19 @@ package com.itcase.test;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
+/**
+ * 
+ * @author scholarly
+ * <p>创建一个对象，该对象的数据占用堆内存；设置为null，当该变量没被引用时，会被垃圾回收机制回收</p>
+ *
+ */
 public class ArrayTest {
-	 // 创建一个对象，该对象的数据占用堆内存；设置为null，当该变量没被引用时，会被垃圾回收机制回收
-	Integer in=null;
-	int[] a =new int[]{1,2,3,4,5,6};
-	int[] b =new int[]{1,2,3,4,5,6};
 	
-	public void Define(){
+	Integer in = null;
+	int[] a =new int[]{1,2,3,4,5,6};
+	int[] b = new int[]{1,2,3,4,5,6};
+	
+	public void deFine(){
 		//创建一个局部变量，该变量占用栈内存；该方法调用结束后，栈内存中的数据会被清除
 		@SuppressWarnings("unused")
 		int a;
@@ -18,7 +24,9 @@ public class ArrayTest {
 		String[] str={"aa","bicia"};
 	}
 	
-	//Arrays是数组处理类，jdk8才有
+	/**
+	 * Arrays是数组处理类，jdk8才有
+	 */
 	public void way(){
 		//复制数组a中的元素到c中
 		@SuppressWarnings("unused")

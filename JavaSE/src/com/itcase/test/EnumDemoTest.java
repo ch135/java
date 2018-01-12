@@ -1,20 +1,24 @@
 package com.itcase.test;
 
-/*
+/**
+ * @author scholarly
  * <p>枚举类不能被继承，不能继承父类，也不能派生出子类</p>
  */
 public enum EnumDemoTest {
+	//加法函数
 	plus{
+		@Override
 		public int eval(int a,int b){
 			return a+b;
 		}
 	},
+	//减法函数
 	minus{
+		@Override
 		public int eval(int a,int b){
 			return a-b;
 		}
 	};
-	//拥有抽象方法的枚举
 	public abstract int eval(int a,int b);
 	
 	public static void main(String[] args){

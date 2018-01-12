@@ -1,8 +1,18 @@
 package com.itcase.test;
 
+/**
+ * 
+ * @author chenhao
+ *
+ */
 public abstract class AbstractWayTest {
+	/**
+	 * 抽象接口测试类
+	 */
 	public abstract void demo1();
-	
+	/**
+	 * 抽象接口测试类
+	 */
 	abstract void demo2();
 	
 	

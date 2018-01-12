@@ -3,6 +3,11 @@ package com.itcase.test;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * 
+ * @author scholarly
+ *
+ */
 
 public class DateBasicTest{
 	public static void main(String[] args){
@@ -12,10 +17,6 @@ public class DateBasicTest{
 		System.out.println(da.toString());
 		System.out.println(da.getTime());
 		System.out.println(da.toInstant());
-		/*
-		 * notify(),notifyAll(),wait()三个方法用于线程处理
-		 * da.notify();
-		 */
 		
 		Calendar cal=Calendar.getInstance();
 		System.out.println(cal.getTime());
