@@ -1,19 +1,18 @@
 package com.itcase.test;
 
 /**
- * @author chenhao
- * @version 1.0
- * @param
+ * <h1>RunTimeException</h1>
+ * 项目运行时异常，我们抓取的异常；
+ * 抓取异常后，可进行事件回滚，记录或在控制台直接输出自定义的异常信息
+ * <hr/>
+ * 1.回滚：spring AOP中有回滚功能，只支持RuntimeException()异常回滚；不支持Exception或自定异常的回滚，要想回滚，收到设置。<br/>
+ * 2.记录：使用log4j,logback等日志框架，SLF4J等日志模板。
+
  * @return 错误处理结果
- * @exception
- * @see
  * @since JDK1.8
- * @deprecated
+ * @author chenhao
  * @time 2017/12/29
- * <p>自己定义异常处理类，程序运行异常时，抓取异常返回处理结果</p>
- * 说明：我们抓取异常后，可进行回滚，记录操作。
- * 1.回滚：spring AOP中有回滚功能，只支持RuntimeException()异常回滚；不支持Exception或自定异常的回滚，要想回滚，收到设置。
- * 2.记录：使用log4j,logback等日志框架，SLF4J等日志门面。
+ * 
  */
 class MyException extends Exception{
 	private static final long serialVersionUID = 1L;
