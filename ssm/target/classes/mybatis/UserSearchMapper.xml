@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.text.dao.UserSearchDao" >
+  <resultMap id="BaseResultMap" type="com.text.model.UserSearch" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="seacher_time" property="seacherTime" jdbcType="TIMESTAMP" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- 查询内容 -->
+  <sql id="Base_Column_List" >
+    id, seacher_time, url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_search
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_search
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.text.model.UserSearch" >
+    insert into user_search (id, seacher_time, url
+      )
+    values (#{id,jdbcType=INTEGER}, #{seacherTime,jdbcType=TIMESTAMP}, #{url,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.text.model.UserSearch" >
+    insert into user_search
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="seacherTime != null" >
+        seacher_time,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="seacherTime != null" >
+        #{seacherTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.text.model.UserSearch" >
+    update user_search
+    <set >
+      <if test="seacherTime != null" >
+        seacher_time = #{seacherTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.text.model.UserSearch" >
+    update user_search
+    set seacher_time = #{seacherTime,jdbcType=TIMESTAMP},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

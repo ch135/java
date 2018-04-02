@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge">
+		<title>FMOVICE</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    	<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+	</head>
+	<body>
+		<div class="page-group">
+			<div class="page">
+				<header class="bar bar-nav">
+					<h1 class="title">FMOVICE</h1>
+				</header>
+				...
+				<div class="content">
+					<form action="#" id='movice'>
+						<div class="list-block">
+							<ul>
+								<li>
+									<div class="item-content">
+										<div class="item-media"><i class="icon icon-form-name"></i></div>
+										<div class="item-inner">
+											<div class="item-title label">地址</div>
+											<div class="item-input">
+												<input id='url' type='text' name="url" placeholder="电影链接" value=""/>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div style="position: relative;margin-left: 5%;">
+							<span style="font-size: 15px;font-family: '微软雅黑'">请输入电影播放页面链接，GO一下即可观看哦！！！！</span>
+						</div>
+						<div class="content-block">
+							<div class="rom">
+								<div class="col-100"><input type="button" value="GO" class="button button-big button-fill button-danger" onclick="go()"/></div>
+							</div>
+						</div>
+					</form>
+					<iframe id='ifr' style="display: none;"></iframe>
+				</div>
+			</div>
+		</div>
+		<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+	    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+	    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+		<script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm-city-picker.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+		<script>
+			$.noConflict();
+		</script>
+		<script type="text/javascript">
+			function go(){
+				if(url.value!=""&&url.value.indexOf("http")>=0){
+					ifr.src='https://api.47ks.com/webcloud/?v='+url.value;
+					movice.style.display='none';
+					ifr.style.display='';
+					ifr.style.width='100%';
+					ifr.style.height='100%';
+					save(url.value);
+				}else{
+					$.alert("请输入地址");
+				}
+			}
+			
+			save=function(url){
+				jQuery.ajax({
+					'data':{
+						'url':url
+					},
+					'type':'post',
+					'url':'/ssm/fmovice/addMessage.do',
+					'success':function(date){
+						console.log('success:'+date);
+					},
+					'error':function(date){
+						console.log('error'+date);
+					}
+				})
+			}
+		</script>
+	</body>
+</html>

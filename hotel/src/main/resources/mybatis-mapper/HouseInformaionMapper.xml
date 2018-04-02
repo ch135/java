@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hotel.dao.HouseInformaionDao" >
+  <resultMap id="BaseResultMap" type="com.hotel.model.HouseInformaion" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="house_id" property="houseId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="daily_time" property="dailyTime" jdbcType="DATE" />
+    <result column="number" property="number" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="gmt_creat" property="gmtCreat" jdbcType="TIMESTAMP" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, house_id, user_id, daily_time, number, status, gmt_creat, gmt_modify
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from house_informaion
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from house_informaion
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hotel.model.HouseInformaion" >
+    insert into house_informaion (id, house_id, user_id, 
+      daily_time, number, status, 
+      gmt_creat, gmt_modify)
+    values (#{id,jdbcType=INTEGER}, #{houseId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{dailyTime,jdbcType=DATE}, #{number,jdbcType=CHAR}, #{status,jdbcType=TINYINT}, 
+      #{gmtCreat,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hotel.model.HouseInformaion" >
+    insert into house_informaion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="houseId != null" >
+        house_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="dailyTime != null" >
+        daily_time,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="gmtCreat != null" >
+        gmt_creat,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="houseId != null" >
+        #{houseId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="dailyTime != null" >
+        #{dailyTime,jdbcType=DATE},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreat != null" >
+        #{gmtCreat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.model.HouseInformaion" >
+    update house_informaion
+    <set >
+      <if test="houseId != null" >
+        house_id = #{houseId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="dailyTime != null" >
+        daily_time = #{dailyTime,jdbcType=DATE},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreat != null" >
+        gmt_creat = #{gmtCreat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hotel.model.HouseInformaion" >
+    update house_informaion
+    set house_id = #{houseId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      daily_time = #{dailyTime,jdbcType=DATE},
+      number = #{number,jdbcType=CHAR},
+      status = #{status,jdbcType=TINYINT},
+      gmt_creat = #{gmtCreat,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

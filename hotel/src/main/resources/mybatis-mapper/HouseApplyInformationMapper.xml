@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hotel.dao.HouseApplyInformationDao" >
+  <resultMap id="BaseResultMap" type="com.hotel.model.HouseApplyInformation" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="house_id" property="houseId" jdbcType="INTEGER" />
+    <result column="living_time" property="livingTime" jdbcType="DATE" />
+    <result column="left_time" property="leftTime" jdbcType="DATE" />
+    <result column="number" property="number" jdbcType="TINYINT" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="phone_number" property="phoneNumber" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="house_number" property="houseNumber" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="gmt_cteat" property="gmtCteat" jdbcType="TIMESTAMP" />
+    <result column="gmt_modeify" property="gmtModeify" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, house_id, living_time, left_time, number, money, phone_number, name, 
+    house_number, status, gmt_cteat, gmt_modeify
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from house_apply_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from house_apply_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hotel.model.HouseApplyInformation" >
+    insert into house_apply_information (id, user_id, house_id, 
+      living_time, left_time, number, 
+      money, phone_number, name, 
+      house_number, status, gmt_cteat, 
+      gmt_modeify)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{houseId,jdbcType=INTEGER}, 
+      #{livingTime,jdbcType=DATE}, #{leftTime,jdbcType=DATE}, #{number,jdbcType=TINYINT}, 
+      #{money,jdbcType=DECIMAL}, #{phoneNumber,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
+      #{houseNumber,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{gmtCteat,jdbcType=TIMESTAMP}, 
+      #{gmtModeify,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hotel.model.HouseApplyInformation" >
+    insert into house_apply_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="houseId != null" >
+        house_id,
+      </if>
+      <if test="livingTime != null" >
+        living_time,
+      </if>
+      <if test="leftTime != null" >
+        left_time,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="houseNumber != null" >
+        house_number,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="gmtCteat != null" >
+        gmt_cteat,
+      </if>
+      <if test="gmtModeify != null" >
+        gmt_modeify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="houseId != null" >
+        #{houseId,jdbcType=INTEGER},
+      </if>
+      <if test="livingTime != null" >
+        #{livingTime,jdbcType=DATE},
+      </if>
+      <if test="leftTime != null" >
+        #{leftTime,jdbcType=DATE},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=TINYINT},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="houseNumber != null" >
+        #{houseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCteat != null" >
+        #{gmtCteat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModeify != null" >
+        #{gmtModeify,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.model.HouseApplyInformation" >
+    update house_apply_information
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="houseId != null" >
+        house_id = #{houseId,jdbcType=INTEGER},
+      </if>
+      <if test="livingTime != null" >
+        living_time = #{livingTime,jdbcType=DATE},
+      </if>
+      <if test="leftTime != null" >
+        left_time = #{leftTime,jdbcType=DATE},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=TINYINT},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number = #{phoneNumber,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="houseNumber != null" >
+        house_number = #{houseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCteat != null" >
+        gmt_cteat = #{gmtCteat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModeify != null" >
+        gmt_modeify = #{gmtModeify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hotel.model.HouseApplyInformation" >
+    update house_apply_information
+    set user_id = #{userId,jdbcType=INTEGER},
+      house_id = #{houseId,jdbcType=INTEGER},
+      living_time = #{livingTime,jdbcType=DATE},
+      left_time = #{leftTime,jdbcType=DATE},
+      number = #{number,jdbcType=TINYINT},
+      money = #{money,jdbcType=DECIMAL},
+      phone_number = #{phoneNumber,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      house_number = #{houseNumber,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      gmt_cteat = #{gmtCteat,jdbcType=TIMESTAMP},
+      gmt_modeify = #{gmtModeify,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

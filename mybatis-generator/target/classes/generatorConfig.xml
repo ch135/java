@@ -53,10 +53,6 @@
             enableCountByExample="false" enableUpdateByExample="false"
             enableDeleteByExample="false" enableSelectByExample="false" 
             selectByExampleQueryId="false"></table>
-        <table tableName="house_type_information"  
-            enableCountByExample="false" enableUpdateByExample="false"
-            enableDeleteByExample="false" enableSelectByExample="false" 
-            selectByExampleQueryId="false"></table>
         <table tableName="user_base_information"  
             enableCountByExample="false" enableUpdateByExample="false"
             enableDeleteByExample="false" enableSelectByExample="false" 

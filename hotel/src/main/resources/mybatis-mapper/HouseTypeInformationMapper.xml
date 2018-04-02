@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hotel.dao.HouseTypeInformationDao" >
+  <resultMap id="BaseResultMap" type="com.hotel.model.HouseTypeInformation" >
+    <id column="id" property="id" jdbcType="TINYINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="subscription" property="subscription" jdbcType="DECIMAL" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+    <result column="device" property="device" jdbcType="TINYINT" />
+    <result column="gmt_creat" property="gmtCreat" jdbcType="TIMESTAMP" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, price, subscription, picture, device, gmt_creat, gmt_modify
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Byte" >
+    select 
+    <include refid="Base_Column_List" />
+    from house_type_information
+    where id = #{id,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte" >
+    delete from house_type_information
+    where id = #{id,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="com.hotel.model.HouseTypeInformation" >
+    insert into house_type_information (id, name, price, 
+      subscription, picture, device, 
+      gmt_creat, gmt_modify)
+    values (#{id,jdbcType=TINYINT}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{subscription,jdbcType=DECIMAL}, #{picture,jdbcType=VARCHAR}, #{device,jdbcType=TINYINT}, 
+      #{gmtCreat,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hotel.model.HouseTypeInformation" >
+    insert into house_type_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="subscription != null" >
+        subscription,
+      </if>
+      <if test="picture != null" >
+        picture,
+      </if>
+      <if test="device != null" >
+        device,
+      </if>
+      <if test="gmtCreat != null" >
+        gmt_creat,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=TINYINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="subscription != null" >
+        #{subscription,jdbcType=DECIMAL},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null" >
+        #{device,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreat != null" >
+        #{gmtCreat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.model.HouseTypeInformation" >
+    update house_type_information
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="subscription != null" >
+        subscription = #{subscription,jdbcType=DECIMAL},
+      </if>
+      <if test="picture != null" >
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null" >
+        device = #{device,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreat != null" >
+        gmt_creat = #{gmtCreat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hotel.model.HouseTypeInformation" >
+    update house_type_information
+    set name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      subscription = #{subscription,jdbcType=DECIMAL},
+      picture = #{picture,jdbcType=VARCHAR},
+      device = #{device,jdbcType=TINYINT},
+      gmt_creat = #{gmtCreat,jdbcType=TIMESTAMP},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=TINYINT}
+  </update>
+</mapper>
