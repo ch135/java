@@ -34,11 +34,11 @@ $("#basic-message").click(function(){
 	   	<tbody>\
 	   		<tr>\
 	   			<td>账&nbsp;号</td>\
-	   			<td>15768616200</td>\
+	   			<td id="account"></td>\
 	   		</tr>\
 	   		<tr>\
 	   			<td>余&nbsp;额</td>\
-	   			<td>1400元</td>\
+	   			<td id="money"></td>\
 	   		</tr>\
 	   	</tbody>\
 	   </table><br /><br />\
@@ -46,7 +46,117 @@ $("#basic-message").click(function(){
 	   
 	$("#menu").attr("class","col-md-4 order-md-2 mb-4");
 	$("#message").attr("class","col-md-8 order-md-1");
+	
+	exertInfo();
 });
+
+/**
+ * @authod chenhao
+ * @time 2018/4/10
+ * 密码修改
+ */
+var passwordChange=function(){
+	var account=$("#user").html();
+	var password=$("#inputPassword").val();
+	var affirmpassword=$("#affirmPassword").val();
+	
+	if(password!=""&&affirmpassword!=""){
+		if(password==affirmpassword){
+			$.ajax({
+				url : '/hotel/user/passchange.do',
+				type : 'post',
+				data : {
+					"password" : password,
+					"account" : account
+				},
+				success : function(result){
+					if(result==0){
+						alert("密码更改成功！");
+						history.go(0);
+					}else{
+						alert("密码更改失败！");
+					}
+				},
+				error : function(e){
+					console.log("密码更改失败");
+					console.log(e);
+				}
+			});
+		}else{
+			alert("密码出错");
+		}
+	}else{
+		alert("请输入密码");
+	}
+}
+
+/**
+ * @author chenhao
+ * @time 2018.4.10
+ * 获取用户额外信息
+ */
+var exertInfo=function(){
+	var account = $("#user").html();
+	$.ajax({
+		url : '/hotel/user/extrainfor.do',
+		dataType : 'json',
+		type : 'post',
+		data : {
+			"account" : account
+		},
+		success : function(result){
+			var account = result.userAccount;
+			var money = result.money;
+			var url=result.picture;
+			
+			if("undefined" != typeof url){
+				$("#head-image").attr("src",url);
+			}else{
+				$("#head-image").attr("src","/hotel/img/person.png");
+				console.log("用户头像不存在");
+			}
+			$("#account").html(account);
+			if(money==0){
+				$("#money").html("0.00 元");
+			}else{
+				$("#money").html(money+"元");
+			}
+		},
+		error : function(e){
+			console.log(e);
+			console.log("获取用户额外信息失败");
+		}
+	});
+}
+exertInfo();
+
+/**
+ * @author chenhao
+ * @time 2018.4.12
+ * <p>用户更改头像</p>
+ */
+$("#head-image").mouseover(function(){
+	$(this).css("cursor","pointer");
+})
+
+$("#head-image").mouseleave(function(){
+	$(this).css("cursor","default");
+})
+
+$("#head-image").click(function(){
+	$("#image-upload").click();
+});
+
+var getURL=function(node){
+	//获取图片路径
+	var url=URL.createObjectURL(node.files[0]);
+	changeImage(url);
+}
+
+var changeImage=function(url){
+	$("#head-image").attr("src",url);
+	$("form").submit();
+}
 
 /**
  * 完成订单点击事件

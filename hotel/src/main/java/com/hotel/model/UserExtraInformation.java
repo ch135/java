@@ -7,9 +7,7 @@ import java.util.Date;
 public class UserExtraInformation implements Serializable {
     private Integer id;
 
-    private Integer userId;
-
-    private String name;
+    private String userAccount;
 
     private String picture;
 
@@ -29,20 +27,12 @@ public class UserExtraInformation implements Serializable {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getUserAccount() {
+        return userAccount;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUserAccount(String userAccount) {
+        this.userAccount = userAccount;
     }
 
     public String getPicture() {
@@ -90,8 +80,7 @@ public class UserExtraInformation implements Serializable {
         }
         UserExtraInformation other = (UserExtraInformation) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+            && (this.getUserAccount() == null ? other.getUserAccount() == null : this.getUserAccount().equals(other.getUserAccount()))
             && (this.getPicture() == null ? other.getPicture() == null : this.getPicture().equals(other.getPicture()))
             && (this.getMoney() == null ? other.getMoney() == null : this.getMoney().equals(other.getMoney()))
             && (this.getGmtCreat() == null ? other.getGmtCreat() == null : this.getGmtCreat().equals(other.getGmtCreat()))
@@ -103,8 +92,7 @@ public class UserExtraInformation implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
+        result = prime * result + ((getUserAccount() == null) ? 0 : getUserAccount().hashCode());
         result = prime * result + ((getPicture() == null) ? 0 : getPicture().hashCode());
         result = prime * result + ((getMoney() == null) ? 0 : getMoney().hashCode());
         result = prime * result + ((getGmtCreat() == null) ? 0 : getGmtCreat().hashCode());
@@ -119,8 +107,7 @@ public class UserExtraInformation implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", userId=").append(userId);
-        sb.append(", name=").append(name);
+        sb.append(", userAccount=").append(userAccount);
         sb.append(", picture=").append(picture);
         sb.append(", money=").append(money);
         sb.append(", gmtCreat=").append(gmtCreat);

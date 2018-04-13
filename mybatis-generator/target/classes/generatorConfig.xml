@@ -41,15 +41,11 @@
         </javaClientGenerator>
         
         <!-- 要生成哪些表 -->
-        <table tableName="house_apply_information"  
+        <table tableName="order_information"  
             enableCountByExample="false" enableUpdateByExample="false"
             enableDeleteByExample="false" enableSelectByExample="false" 
             selectByExampleQueryId="false"></table>
-        <table tableName="house_informaion"  
-            enableCountByExample="false" enableUpdateByExample="false"
-            enableDeleteByExample="false" enableSelectByExample="false" 
-            selectByExampleQueryId="false"></table>
-        <table tableName="house_type_information"  
+        <table tableName="house_type"  
             enableCountByExample="false" enableUpdateByExample="false"
             enableDeleteByExample="false" enableSelectByExample="false" 
             selectByExampleQueryId="false"></table>

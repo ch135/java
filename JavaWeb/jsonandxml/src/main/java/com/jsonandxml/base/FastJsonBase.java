@@ -39,6 +39,15 @@ public class FastJsonBase {
 		return students;
 	}
 	
+	//bean to json byFastJson
+	public String toJsonString(){
+		String str=new String("aaaa");
+		
+		String jsonstr=JSON.toJSONString(str);
+		return jsonstr;
+		
+	}
+	
 	/**
 	 * 
 	 * @param json

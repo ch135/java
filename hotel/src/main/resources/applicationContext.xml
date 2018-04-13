@@ -11,7 +11,9 @@
         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd 
-        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/task/spring-task.xsd">
     
     <description>Spring公共配置</description>
     
@@ -29,6 +31,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:/mybatis-mapper/*Mapper.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
     <!-- ???-->
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
@@ -37,9 +40,14 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.hotel.dao"/>
     </bean>
-    
+   
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+    
+    <!-- spring定时器配置 -->
+    <task:scheduler id="qbScheduler" pool-size="10"></task:scheduler>
+    <task:annotation-driven scheduler="qbScheduler" mode="proxy" />
+    <context:component-scan base-package="com.hotel.*"></context:component-scan>
 </beans>

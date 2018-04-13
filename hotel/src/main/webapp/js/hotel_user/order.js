@@ -30,3 +30,54 @@ $("#need-number").change(function(){
    		</tr>';
     $("#person-message").html(text);
 });
+
+/**
+ * 
+ * @author chenhao
+ * @time  2018/4/10
+ * 设置不同房间信息
+ * 
+ */
+var setHouse=function(){
+	var url=window.location.href;
+	var number=url.split("=");
+	if(number[1]==2){
+		$("#house").attr("src","../img/house2.jpg");
+		$("#house").attr("alt","双人间");
+		$("#message").html("" +
+				"<li>面积20-30㎡ 位于 2-3 层</li>"+
+		        "<li>双床（不可以加床）</li>"+
+		        "<li>独立卫浴 有窗</li>"+
+		        "<li>免费WiFi 高清智能电视 电脑</li>"
+		);
+		$("#house-price").html("150元<small class=\"text-muted\">/ 晚</small>");
+		$("#describe").html("实用双人房&nbsp;&nbsp; 情侣必备");
+		$("#all-money").html("150.00");
+		$("#pay-money").html("150.00");
+	}else if(number[1]==3){
+		$("#house").attr("src","../img/house3.jpg");
+		$("#house").attr("alt","三人间");
+		$("#message").html("" +
+				"<li>面积30-40㎡ 位于 3-4 层</li>"+
+		        "<li>三床（不可以加床）</li>"+
+		        "<li>独立卫浴 有窗</li>"+
+		        "<li>免费WiFi 高清智能电视 电脑</li>"
+		);
+		$("#house-price").html("200元<small class=\"text-muted\">/ 晚</small>");
+		$("#describe").html("旅游必备&nbsp;&nbsp; 家庭首选");
+		$("#all-money").html("200.00");
+		$("#pay-money").html("200.00");
+	}
+}
+
+/**
+ * @author chenhao
+ * @time 2018.4.7
+ * 日期调用函数
+ */
+$(data_init());
+
+setHouse();
+
+
+

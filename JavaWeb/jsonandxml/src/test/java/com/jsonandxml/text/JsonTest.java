@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.jsonandxml.base.GsonBase;
 import com.jsonandxml.base.ValueBase;
@@ -28,6 +30,7 @@ public class JsonTest extends ValueBase{
 	}
 	
 	@Test
+	@Ignore
 	public void toJsonTest(){
 		GsonBase jsonbase=new GsonBase();
 		assertEquals("",jsonbase.toJson(student,gson));
@@ -39,5 +42,13 @@ public class JsonTest extends ValueBase{
 		GsonBase jsonbase=new GsonBase();
 		String studentjson=jsonbase.toJson(student,gson);
 		assertEquals("", jsonbase.toBean(studentjson,gson));
+	}
+	
+	@Test
+	public void toJsonStringTeST(){
+		String str=new String("aaaa");
+				
+		String jsonstr=JSON.toJSONString(str);
+		assertEquals("", jsonstr);
 	}
 }

@@ -3,6 +3,8 @@ package com.hotel.dao;
 import com.hotel.model.UserExtraInformation;
 
 public interface UserExtraInformationDao {
+	UserExtraInformation selectByAccount(String user_account);
+	
     int deleteByPrimaryKey(Integer id);
 
     int insert(UserExtraInformation record);
@@ -14,4 +16,6 @@ public interface UserExtraInformationDao {
     int updateByPrimaryKeySelective(UserExtraInformation record);
 
     int updateByPrimaryKey(UserExtraInformation record);
+    
+    int updateByAccount(UserExtraInformation recode);
 }

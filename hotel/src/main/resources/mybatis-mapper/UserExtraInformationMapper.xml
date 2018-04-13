@@ -3,15 +3,14 @@
 <mapper namespace="com.hotel.dao.UserExtraInformationDao" >
   <resultMap id="BaseResultMap" type="com.hotel.model.UserExtraInformation" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="user_account" property="userAccount" jdbcType="VARCHAR" />
     <result column="picture" property="picture" jdbcType="VARCHAR" />
     <result column="money" property="money" jdbcType="DECIMAL" />
     <result column="gmt_creat" property="gmtCreat" jdbcType="TIMESTAMP" />
     <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, name, picture, money, gmt_creat, gmt_modify
+    id, user_account, picture, money, gmt_creat, gmt_modify
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,17 +18,24 @@
     from user_extra_information
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByAccount" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_extra_information
+    where user_account = #{user_account,jdbcType=VARCHAR}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user_extra_information
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hotel.model.UserExtraInformation" >
-    insert into user_extra_information (id, user_id, name, 
-      picture, money, gmt_creat, 
-      gmt_modify)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{picture,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}, #{gmtCreat,jdbcType=TIMESTAMP}, 
-      #{gmtModify,jdbcType=TIMESTAMP})
+    insert into user_extra_information (id, user_account, picture, 
+      money, gmt_creat, gmt_modify
+      )
+    values (#{id,jdbcType=INTEGER}, #{userAccount,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, 
+      #{money,jdbcType=DECIMAL}, #{gmtCreat,jdbcType=TIMESTAMP}, #{gmtModify,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hotel.model.UserExtraInformation" >
     insert into user_extra_information
@@ -37,11 +43,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="userId != null" >
-        user_id,
-      </if>
-      <if test="name != null" >
-        name,
+      <if test="userAccount != null" >
+        user_account,
       </if>
       <if test="picture != null" >
         picture,
@@ -60,11 +63,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="userAccount != null" >
+        #{userAccount,jdbcType=VARCHAR},
       </if>
       <if test="picture != null" >
         #{picture,jdbcType=VARCHAR},
@@ -83,11 +83,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hotel.model.UserExtraInformation" >
     update user_extra_information
     <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="userAccount != null" >
+        user_account = #{userAccount,jdbcType=VARCHAR},
       </if>
       <if test="picture != null" >
         picture = #{picture,jdbcType=VARCHAR},
@@ -106,12 +103,18 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hotel.model.UserExtraInformation" >
     update user_extra_information
-    set user_id = #{userId,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
+    set user_account = #{userAccount,jdbcType=VARCHAR},
       picture = #{picture,jdbcType=VARCHAR},
       money = #{money,jdbcType=DECIMAL},
       gmt_creat = #{gmtCreat,jdbcType=TIMESTAMP},
       gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByAccount" parameterType="com.hotel.model.UserExtraInformation" >
+    update user_extra_information
+    set picture = #{picture,jdbcType=VARCHAR},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
+    where user_account = #{userAccount,jdbcType=VARCHAR}
   </update>
 </mapper>

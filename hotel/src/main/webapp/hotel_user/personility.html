@@ -21,8 +21,13 @@
             -->
 			<div class="container">
 				<div class="py-5 text-center" style="background: url(../img/background.png);">
-					<img class="rounded-circle" src="../img/person.png" alt="Generic placeholder image" width="160" height="160">
-				</div><br />
+				    <form action="/hotel/user/upload.do" method="post" enctype="multipart/form-data">
+				        <img class="rounded-circle" alt="用户头像" width=160 height=160 id="head-image"/>
+				        <div style="display:none;">
+                            <input id="image-upload" onchange="getURL(this)" type="file" name="image" accept="image/*"/>
+                        </div>
+				    </form>
+				</div><br/>
 
 				<div class="row">
 					<div class="col-md-4 order-md-2 mb-4" id="menu">
@@ -53,11 +58,11 @@
 					   		<tbody>
 						   		<tr>
 						   			<td>账&nbsp;号</td>
-						   			<td>15768616200</td>
+						   			<td id="account"></td>
 						   		</tr>
 						   		<tr>
 						   			<td>余&nbsp;额</td>
-						   			<td>1400元</td>
+						   			<td id="money"></td>
 						   		</tr>
 					   		</tbody>
 					   </table><br /><br />
@@ -89,7 +94,7 @@
 						<div class="modal-body">
 							<input type="password" id="inputPassword" class="form-control" placeholder="密码" required autofocus><br />
 							<input type="password" id="affirmPassword" class="form-control" placeholder="确认密码" required autofocus><br />
-							<button class="btn btn-lg btn-primary btn-block" type="submit">确认修改</button>
+							<button class="btn btn-lg btn-primary btn-block" onclick="passwordChange()">确认修改</button>
 						</div>
 
 						<!--模态框底部-->
@@ -104,10 +109,12 @@
 
 		<link href="../css/bootstrap.min.css" rel="stylesheet" />
 		<link href="../css/carousel.css" rel="stylesheet" />
+		
 		<script type="application/javascript" src="../js/hotel_user/page-common.js"></script>
 		<script type="application/javascript" src="../js/jquery-3.2.1.slim.min.js"></script>
 		<script type="text/javascript" src="../js/popper.min.js"></script>
 		<script type="application/javascript" src="../js/bootstrap.min.js"></script>
+		<script type="application/javascript" src="../js/jquery-1.10.2.js"></script>
 		<script type="application/javascript" src="../js/hotel_user/personility.js"></script>
 	</body>
 

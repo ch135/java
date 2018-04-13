@@ -18,6 +18,12 @@
     from user_base_information
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByInformation" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_base_information
+    where account = #{0} and password = #{1}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user_base_information
     where id = #{id,jdbcType=INTEGER}
@@ -94,6 +100,20 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+   <update id="updateByAccountSelective" parameterType="com.hotel.model.UserBaseInformation" >
+    update user_base_information
+    <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where account = #{account,jdbcType=VARCHAR}
+  </update>
+  
   <update id="updateByPrimaryKey" parameterType="com.hotel.model.UserBaseInformation" >
     update user_base_information
     set account = #{account,jdbcType=VARCHAR},

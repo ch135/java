@@ -10,14 +10,23 @@
   </head>
 
   <body class="text-center">
-    <form class="form-signin">
+    <form class="form-signin" action="#" onsubmit="return false">
       <img class="mb-4" src="../img/hotel.png" alt="" width="144" height="144">
       <h1 class="h3 mb-3 font-weight-normal">欢迎注册</h1>
       <input type="email" id="inputEmail" class="form-control" placeholder="电子邮件" required autofocus>
       <input type="password" id="inputPassword" class="form-control" placeholder="密码" required autofocus>
       <input type="password" id="affirmPassword" class="form-control" placeholder="确认密码" required autofocus>
-      <input type="password" id="verify" class="form-control" placeholder="验证码" required autofocus>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">注&nbsp;册</button>
+      <div class="row">
+        <div class="col-7">
+            <div class="verify-input-area">
+                <input type="text" class="varify-input-code form-control" id="varify" placeholder="验证码"/>
+            </div>
+        </div>
+        <div class="col-5">
+            <div id="mpanel2" ></div>
+        </div>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" id="check-btn">注&nbsp;册</button>
       <small class="d-block text-right mt-3">
           <a href="index.html">返回首页</a>
       </small>
@@ -26,5 +35,10 @@
     
     <link href="../css/bootstrap.min.css" rel="stylesheet">
   	<link href="../css/signin.css" rel="stylesheet">
+  	<link href="../css/verify.css" rel="stylesheet">
+  	
+  	<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+  	<script type="text/javascript" src="../js/hotel_user/verify.js"></script>
+  	<script type="text/javascript" src="../js/hotel_user/register.js"></script>
   </body>
 </html>
