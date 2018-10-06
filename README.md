@@ -1,2 +1,2 @@
 # java
-The code of the java study.
+java 基本入门学习代码。
